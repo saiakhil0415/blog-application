@@ -8,6 +8,7 @@ public class CommentDTO {
 	
 	private Long id;
 	
+	
 	@NotNull(message = "Blog ID cannot be null")
     private Long blogId;
 
