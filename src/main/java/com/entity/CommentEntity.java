@@ -18,11 +18,11 @@ public class CommentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long commentId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "blog_id", nullable = false)
-	private BlogEntity blog;
+	private BlogEntity blogEntity;
 
 	@NotBlank(message = "Comment cannot be empty")
 	@Size(min = 3, max = 200, message = "Comment must be between 3 and 200 characters")
@@ -33,19 +33,19 @@ public class CommentEntity {
 	}
 
 	public Long getId() {
-		return id;
+		return commentId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long commentId) {
+		this.commentId = commentId;
 	}
 
 	public BlogEntity getBlog() {
-		return blog;
+		return blogEntity;
 	}
 
-	public void setBlog(BlogEntity blog) {
-		this.blog = blog;
+	public void setBlog(BlogEntity blogEntity) {
+		this.blogEntity = blogEntity;
 	}
 
 	public String getCommentText() {
@@ -59,8 +59,8 @@ public class CommentEntity {
 	@Override
 	public String toString() {
         return "CommentEntity { " +
-                "id=" + id +
-                ", blogId=" + (blog != null ? blog.getId() : "null") +
+                "commentId=" + commentId +
+                ", blogId=" + (blogEntity != null ? blogEntity.getId() : "null") +
                 ", commentText='" + commentText + '\'' +
                 " }";
     }

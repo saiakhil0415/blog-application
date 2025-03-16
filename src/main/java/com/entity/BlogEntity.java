@@ -19,61 +19,61 @@ public class BlogEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long blogId;
 
 	@NotBlank(message = "Title cannot be empty")
 	@Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters")
 	@Column(nullable = false, length = 100)
-	private String title;
+	private String blogTitle;
 
 	@NotBlank(message = "Content cannot be empty")
 	@Size(min = 3, max = 200, message = "Content must be between 3 and 200 characters")
 	@Column(nullable = false, length = 200)
-	private String content;
+	private String blogContent;
 
 	@CreationTimestamp 
 	@Column(nullable = false, updatable = false)
-	private LocalDate createdAt;
+	private LocalDate blogCreatedDate;
 
 	public BlogEntity() {
 	}
 
 	public Long getId() {
-		return id;
+		return blogId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long blogId) {
+		this.blogId = blogId;
 	}
 
 	public String getTitle() {
-		return title;
+		return blogTitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitle(String blogTitle) {
+		this.blogTitle = blogTitle;
 	}
 
 	public String getContent() {
-		return content;
+		return blogContent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent(String blogContent) {
+		this.blogContent = blogContent;
 	}
 
 	public LocalDate getCreatedAt() {
-		return createdAt;
+		return blogCreatedDate;
 	}
 
-	public void setCreatedAt(LocalDate createdAt) {
-		this.createdAt = createdAt;
+	public void setCreatedAt(LocalDate blogCreatedDate) {
+		this.blogCreatedDate = blogCreatedDate;
 	}
 
 	@Override
 	public String toString() {
-		return "BlogEntity { " + "id=" + id + ", title='" + title + '\'' + ", content='" + content + '\''
-				+ ", createdAt=" + createdAt + " }";
+		return "BlogEntity { " + "blogId=" + blogId + ", blogTitle='" + blogTitle + '\'' + ", blogContent='" + blogContent + '\''
+				+ ", blogCreatedDate=" + blogCreatedDate + " }";
 	}
 
 }

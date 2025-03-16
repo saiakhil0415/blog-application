@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dto.BlogDTO;
 import com.entity.BlogEntity;
+import com.exceptions.BlogNotFoundException;
 import com.repository.BlogRepository;
 
 @Service
@@ -28,32 +29,32 @@ public class BlogServiceImplementation implements BlogService {
 	}
 
 	@Override
-	public BlogDTO getBlogById(Long id) {
-		BlogEntity blog = blogRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Blog not found with id: " + id));
-
-		return convertToDTO(blog);
+	public BlogDTO getBlogById(Long blogId) {
+	    BlogEntity blogEntity = blogRepository.findById(blogId)
+	            .orElseThrow(() -> new BlogNotFoundException("Blog not found with ID: " + blogId));
+	    return convertToDTO(blogEntity);
 	}
 
+
 	@Override
-	public BlogDTO updateBlog(Long id, BlogDTO blogDTO) {
-		BlogEntity blog = blogRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Blog not found with id: " + id));
+	public BlogDTO updateBlog(Long blogId, BlogDTO blogDTO) {
+		BlogEntity blogEntity = blogRepository.findById(blogId)
+				.orElseThrow(() -> new BlogNotFoundException("Blog not found with id: " + blogId));
 
-		blog.setTitle(blogDTO.getTitle());
-		blog.setContent(blogDTO.getContent());
+		blogEntity.setTitle(blogDTO.getTitle());
+		blogEntity.setContent(blogDTO.getContent());
 
-		BlogEntity updatedBlog = blogRepository.save(blog);
+		BlogEntity updatedBlog = blogRepository.save(blogEntity);
 		return convertToDTO(updatedBlog);
 	}
 
 	@Transactional
 	@Override
-	public void deleteBlog(Long id) {
-		BlogEntity blog = blogRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Blog not found with id: " + id));
+	public void deleteBlog(Long blogId) {
+		BlogEntity blogEntity = blogRepository.findById(blogId)
+				.orElseThrow(() -> new BlogNotFoundException("Blog not found with id: " + blogId));
 
-		blogRepository.delete(blog);
+		blogRepository.delete(blogEntity);
 
 	}
 

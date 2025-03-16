@@ -4,54 +4,54 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class BlogDTO {
-	private Long id;
+	private Long blogId;
 
 	@NotBlank(message = "Title cannot be empty")
 	@Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters")
-	private String title;
+	private String blogTitle;
 
 	@NotBlank(message = "Content cannot be empty")
 	@Size(min = 3, max = 200, message = "Content must be between 3 and 200 characters")
-	private String content;
+	private String blogContent;
 
 	public BlogDTO() {
 		super();
 	}
 
-	public BlogDTO(Long id, String title, String content) {
+	public BlogDTO(Long blogId, String blogTitle, String blogContent) {
 		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
+		this.blogId = blogId;
+		this.blogTitle = blogTitle;
+		this.blogContent = blogContent;
 	}
 
 	public Long getId() {
-		return id;
+		return blogId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long blogId) {
+		this.blogId = blogId;
 	}
 
 	public String getTitle() {
-		return title;
+		return blogTitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitle(String blogTitle) {
+		this.blogTitle = blogTitle;
 	}
 
 	public String getContent() {
-		return content;
+		return blogContent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent(String blogContent) {
+		this.blogContent = blogContent;
 	}
 
 	@Override
 	public String toString() {
-		return "BlogDTO { " + "id=" + id + ", title='" + title + '\'' + ", content='" + content + '\'' + " }";
+		return "BlogDTO { " + "blogId=" + blogId + ", blogTitle='" + blogTitle + '\'' + ", blogContent='" + blogContent + '\'' + " }";
 	}
 
 }

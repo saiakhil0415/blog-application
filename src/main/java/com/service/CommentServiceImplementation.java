@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dto.CommentDTO;
 import com.entity.BlogEntity;
 import com.entity.CommentEntity;
-import com.exceptions.ResourceNotFoundException;
+import com.exceptions.BlogNotFoundException;
 import com.repository.BlogRepository;
 import com.repository.CommentRepository;
 
@@ -27,10 +27,10 @@ public class CommentServiceImplementation implements CommentService {
 	@Transactional
 	@Override
 	public CommentDTO postComment(CommentDTO commentDTO) {
-		BlogEntity blog = blogRepository.findById(commentDTO.getBlogId())
-				.orElseThrow(() -> new ResourceNotFoundException("Blog not found with id: " + commentDTO.getBlogId()));
+		BlogEntity blogEntity = blogRepository.findById(commentDTO.getBlogId())
+				.orElseThrow(() -> new BlogNotFoundException("Blog not found with id: " + commentDTO.getBlogId()));
 
-		CommentEntity comment = convertToEntity(commentDTO, blog);
+		CommentEntity comment = convertToEntity(commentDTO, blogEntity);
 
 		CommentEntity savedComment = commentRepository.save(comment);
 		return convertToDTO(savedComment);
@@ -39,7 +39,7 @@ public class CommentServiceImplementation implements CommentService {
 	@Override
 	public List<CommentDTO> getCommentsByBlogId(Long blogId) {
 		 blogRepository.findById(blogId)
-         .orElseThrow(() -> new ResourceNotFoundException("Blog not found with id: " + blogId));
+         .orElseThrow(() -> new BlogNotFoundException("Blog not found with id: " + blogId));
 
 		List<CommentEntity> comments = commentRepository.findByBlogId(blogId);
 		return comments.stream().map(this::convertToDTO).collect(Collectors.toList());

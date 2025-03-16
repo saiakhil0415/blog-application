@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 
 public class CommentDTO {
 	
-	private Long id;
+	private Long commentId;
 	
 	
 	@NotNull(message = "Blog ID cannot be null")
@@ -22,21 +22,21 @@ public class CommentDTO {
 	}
 
 
-	public CommentDTO(Long id, Long blogId, String commentText) {
+	public CommentDTO(Long commentId, Long blogId, String commentText) {
 		super();
-		this.id = id;
+		this.commentId = commentId;
 		this.blogId = blogId;
 		this.commentText = commentText;
 	}
 
 
 	public Long getId() {
-		return id;
+		return commentId;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long commentId) {
+		this.commentId = commentId;
 	}
 
 
@@ -62,7 +62,7 @@ public class CommentDTO {
 	@Override
     public String toString() {
         return "CommentDTO { " +
-                "id=" + id +
+                "commentId=" + commentId +
                 ", blogId=" + blogId +
                 ", commentText='" + commentText + '\'' +
                 " }";
