@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface BlogService {
     BlogDTO createBlog(BlogDTO blogDTO);
-    BlogDTO getBlogById(Long id);
-    BlogDTO updateBlog(Long id, BlogDTO blogDTO);
-    void deleteBlog(Long id);
+    BlogDTO getBlogById(Long blogId);
+    BlogDTO updateBlog(Long blogId, BlogDTO blogDTO);
+    void deleteBlog(Long blogId);
     List<BlogDTO> getAllBlogs();
 }

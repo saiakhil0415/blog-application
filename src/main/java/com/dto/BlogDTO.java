@@ -25,33 +25,34 @@ public class BlogDTO {
 		this.blogContent = blogContent;
 	}
 
-	public Long getId() {
+	public Long getBlogId() {
 		return blogId;
 	}
 
-	public void setId(Long blogId) {
+	public void setBlogId(Long blogId) {
 		this.blogId = blogId;
 	}
 
-	public String getTitle() {
+	public String getBlogTitle() {
 		return blogTitle;
 	}
 
-	public void setTitle(String blogTitle) {
+	public void setBlogTitle(String blogTitle) {
 		this.blogTitle = blogTitle;
 	}
 
-	public String getContent() {
+	public String getBlogContent() {
 		return blogContent;
 	}
 
-	public void setContent(String blogContent) {
+	public void setBlogContent(String blogContent) {
 		this.blogContent = blogContent;
 	}
 
 	@Override
 	public String toString() {
-		return "BlogDTO { " + "blogId=" + blogId + ", blogTitle='" + blogTitle + '\'' + ", blogContent='" + blogContent + '\'' + " }";
+		return "BlogDTO { " + "blogId=" + blogId + ", blogTitle='" + blogTitle + '\'' + ", blogContent='" + blogContent
+				+ '\'' + " }";
 	}
 
 }

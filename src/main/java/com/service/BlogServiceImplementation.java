@@ -41,8 +41,8 @@ public class BlogServiceImplementation implements BlogService {
 		BlogEntity blogEntity = blogRepository.findById(blogId)
 				.orElseThrow(() -> new BlogNotFoundException("Blog not found with id: " + blogId));
 
-		blogEntity.setTitle(blogDTO.getTitle());
-		blogEntity.setContent(blogDTO.getContent());
+		blogEntity.setBlogTitle(blogDTO.getBlogTitle());
+		blogEntity.setBlogContent(blogDTO.getBlogContent());
 
 		BlogEntity updatedBlog = blogRepository.save(blogEntity);
 		return convertToDTO(updatedBlog);
@@ -65,13 +65,13 @@ public class BlogServiceImplementation implements BlogService {
 
 	// Conversion Methods
 	private BlogDTO convertToDTO(BlogEntity blogEntity) {
-		return new BlogDTO(blogEntity.getId(), blogEntity.getTitle(), blogEntity.getContent());
+		return new BlogDTO(blogEntity.getBlogId(), blogEntity.getBlogTitle(), blogEntity.getBlogContent());
 	}
 
 	private BlogEntity convertToEntity(BlogDTO blogDTO) {
 		BlogEntity blogEntity = new BlogEntity();
-		blogEntity.setTitle(blogDTO.getTitle());
-		blogEntity.setContent(blogDTO.getContent());
+		blogEntity.setBlogTitle(blogDTO.getBlogTitle());
+		blogEntity.setBlogContent(blogDTO.getBlogContent());
 		return blogEntity;
 	}
 

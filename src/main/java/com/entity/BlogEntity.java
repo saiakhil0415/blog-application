@@ -31,49 +31,49 @@ public class BlogEntity {
 	@Column(nullable = false, length = 200)
 	private String blogContent;
 
-	@CreationTimestamp 
+	@CreationTimestamp
 	@Column(nullable = false, updatable = false)
 	private LocalDate blogCreatedDate;
 
 	public BlogEntity() {
 	}
 
-	public Long getId() {
+	public Long getBlogId() {
 		return blogId;
 	}
 
-	public void setId(Long blogId) {
+	public void setBlogId(Long blogId) {
 		this.blogId = blogId;
 	}
 
-	public String getTitle() {
+	public String getBlogTitle() {
 		return blogTitle;
 	}
 
-	public void setTitle(String blogTitle) {
+	public void setBlogTitle(String blogTitle) {
 		this.blogTitle = blogTitle;
 	}
 
-	public String getContent() {
+	public String getBlogContent() {
 		return blogContent;
 	}
 
-	public void setContent(String blogContent) {
+	public void setBlogContent(String blogContent) {
 		this.blogContent = blogContent;
 	}
 
-	public LocalDate getCreatedAt() {
+	public LocalDate getBlogCreatedDate() {
 		return blogCreatedDate;
 	}
 
-	public void setCreatedAt(LocalDate blogCreatedDate) {
+	public void setBlogCreatedDate(LocalDate blogCreatedDate) {
 		this.blogCreatedDate = blogCreatedDate;
 	}
 
 	@Override
 	public String toString() {
-		return "BlogEntity { " + "blogId=" + blogId + ", blogTitle='" + blogTitle + '\'' + ", blogContent='" + blogContent + '\''
-				+ ", blogCreatedDate=" + blogCreatedDate + " }";
+		return "BlogEntity { " + "blogId=" + blogId + ", blogTitle='" + blogTitle + '\'' + ", blogContent='"
+				+ blogContent + '\'' + ", blogCreatedDate=" + blogCreatedDate + " }";
 	}
 
 }

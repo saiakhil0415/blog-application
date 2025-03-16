@@ -38,16 +38,19 @@ public class CommentServiceImplementation implements CommentService {
 
 	@Override
 	public List<CommentDTO> getCommentsByBlogId(Long blogId) {
-		 blogRepository.findById(blogId)
-         .orElseThrow(() -> new BlogNotFoundException("Blog not found with id: " + blogId));
+	    BlogEntity blog = blogRepository.findById(blogId)
+	            .orElseThrow(() -> new BlogNotFoundException("Blog not found with ID: " + blogId));
 
-		List<CommentEntity> comments = commentRepository.findByBlogId(blogId);
-		return comments.stream().map(this::convertToDTO).collect(Collectors.toList());
+	    List<CommentEntity> commentEntities = commentRepository.findByBlog(blog);
+	    return commentEntities.stream()
+	            .map(this::convertToDTO)
+	            .collect(Collectors.toList());
 	}
+
 
 	// Conversion Methods
 	private CommentDTO convertToDTO(CommentEntity commentEntity) {
-		return new CommentDTO(commentEntity.getId(), commentEntity.getBlog().getId(), commentEntity.getCommentText());
+		return new CommentDTO(commentEntity.getCommentId(), commentEntity.getBlog().getBlogId(), commentEntity.getCommentText());
 	}
 
 	private CommentEntity convertToEntity(CommentDTO commentDTO, BlogEntity blog) {
